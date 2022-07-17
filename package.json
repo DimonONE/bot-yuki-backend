@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc --noEmitOnError",
-    "start": "node ./dist/app.js",
+    "build": "node ./config/build/esbuild-config.js ",
+    "start": "node ./build/app.js",
     "dev": "nodemon --exec ts-node src/app.ts"
   },
   "author": "DimonOne",
@@ -17,7 +17,10 @@
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.5",
     "nodemon": "^2.0.15",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.6.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.49"
   }
 }
