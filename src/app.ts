@@ -1,7 +1,7 @@
 import express from "express"
 import mongoose from 'mongoose';
 import { adminCommands, isBlockTiktok } from "./controlers/commandsControler";
-import { allUsers, getUser, createUser } from "./controlers/usersControlers";
+import { allUsers, getUser, createUser, levelUp } from "./controlers/usersControlers";
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -39,7 +39,7 @@ app.post("/createUser", async ( req, res) => {
         if (req.body?.userId) {
             const user = await getUser(req.body.userId)
             if (!user.length){
-                const newUser = await createUser(userId, userName)
+                const newUser = await createUser({ userId, userName })
                 res.send(newUser)
             } else {
                 res.send( { message: "User already exists" } )
@@ -59,6 +59,16 @@ app.post("/isBlockTiktok", async ( req, res) => {
             res.send( resp.find(r => r?.isBlockTiktok !== undefined ) )
         }
     } catch(error) { res.send( { message: "Incorrect values" } )}
+})
+
+app.put("/userLevelUp", async ( req, res ) => {
+    try {
+        if (req.body?.userId !== undefined) {
+            res.send( await levelUp({userId: req.body.userId } ))
+        } else {
+            res.send( { message: "userId required!" } )
+        }
+    } catch(error) { res.send( { message: "Error!" } )}
 })
 
 export const dataBase = async () => {

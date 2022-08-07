@@ -7,6 +7,16 @@ const schema = new Schema({
     },
     userName: {
         type: String,
+    },
+    experience: {
+        exp: Number,
+        maxExp: Number,
+    },
+    lvl: {
+        type: Number,
+    },
+    role: {
+        type: String
     }
 })
 
