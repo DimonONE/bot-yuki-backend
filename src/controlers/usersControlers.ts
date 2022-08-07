@@ -3,7 +3,7 @@ import { User as UserT } from "../types/User";
 
 const experience = {
   exp: 2,
-  maxExp: 10,
+  maxExp: 100,
 };
 
 export const getUser = async (userId: number) =>
