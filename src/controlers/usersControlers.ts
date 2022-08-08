@@ -30,7 +30,7 @@ export const levelUp = async ({ userId }: Pick<UserT, "userId">) => {
             experience: {
               exp: maxExp ? 0 : exp.exp + experience.exp,
               maxExp: maxExp
-                ? Math.floor((exp.maxExp * experience.maxExp) / 7)
+                ? Math.floor(exp.maxExp + exp.maxExp / 3)
                 : exp.maxExp,
             },
             lvl: maxExp ? ++lvl : lvl,
