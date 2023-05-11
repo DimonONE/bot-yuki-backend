@@ -76,7 +76,7 @@ export const dataBase = async () => {
         await mongoose.connect(MONGODB_URI)
         console.log('CONNECT MONGO_DB')
     } catch (error) {
-        console.log('DataBase errors', error)
+        console.log('Errors connect to mongodb: ', error)
     }
 }
 
